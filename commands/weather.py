@@ -9,7 +9,7 @@ class Weather(commands.Cog):
         self.bot = bot
 
     @commands.command()
-    async def weather(ctx, day: int = 0):
+    async def weather(self, ctx, day: int = 0):
       try:
         url = "https://ai-weather-by-meteosource.p.rapidapi.com/daily"
         querystring = {
