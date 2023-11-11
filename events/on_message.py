@@ -28,7 +28,7 @@ class OnMessageCog(commands.Cog):
 
         pattern = r'\b(?:' + '|'.join(map(re.escape, msgs)) + r')\b'
         if message.content.startswith("kurisutina"):
-            await message.channel.send(message.channel, "I told you there is no -tina!")
+            await message.channel.send("I told you there is no -tina!")
             return
         if re.search(pattern, message.content.lower()):
             text, gif_url = random.choice(responses)
