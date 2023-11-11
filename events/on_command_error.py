@@ -11,7 +11,7 @@ class OnCommandError(commands.Cog):
       if isinstance(error, commands.CommandNotFound):
         user_input = ctx.message.content
         await ctx.send(
-            f"`{user_input}` isn't a valid command. Use `>help` to see all commands."
+            f"I don't understand. Try `>help`"
         )
       elif isinstance(error, commands.MissingPermissions):
         await ctx.send("You don't have permission to run this command.")
