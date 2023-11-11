@@ -1,0 +1,64 @@
+import discord
+import random
+import typing
+from discord.ext import commands
+from discord import app_commands
+
+class Pfp(commands.Cog):
+    def __init__(self, bot):
+        self.bot = bot
+    
+    def is_owner():
+        def predicate(interaction: discord.Interaction):
+            if interaction.user.id == interaction.guild.owner_id:
+                return True
+        return app_commands.check(predicate)
+
+    @app_commands.command(description="Pong!")
+    async def ping(self, interaction: discord.Interaction):
+        latency = round(self.bot.latency * 1000)  # Get the bot's latency in milliseconds
+        await interaction.response.send_message(f'Pong! Bot Latency: {latency}ms')
+        
+    @app_commands.command(name="welcomesuser", description="Says hello in chinese!")
+    async def ciao(self, interaction: discord.Interaction):
+        await interaction.response.send_message(f'ciao {interaction.user.mention}', ephemeral=True)
+        
+    async def drink_autocompletion(
+        self,
+        interaction: discord.Interaction,
+        current: str,
+    ) -> typing.List[app_commands.Choice[str]]:
+        data = []
+        for drink_choice in ['beer', 'milk', 'tea', 'coffee', 'cola', 'mountain dew']:
+            if current.lower() in drink_choice.lower():
+                data.append(app_commands.Choice(name=drink_choice, value=drink_choice))
+        return data        
+    
+    @app_commands.command(description="choose your favorite drink!")
+    @app_commands.autocomplete(choice=drink_autocompletion)
+    async def drink(self, interaction: discord.Interaction, choice: str):
+        await interaction.response.send_message(f'You chose {choice}!', ephemeral=True)
+        
+    @app_commands.command()
+    @app_commands.choices(choice=[
+        app_commands.Choice(name='red', value='1'),
+        app_commands.Choice(name='green', value='2'),
+        app_commands.Choice(name='blue', value='3'),
+    ])
+    async def color(self, interaction: discord.Interaction, choice: app_commands.Choice[str]):
+        await interaction.response.send_message(f'You chose {choice}!', ephemeral=True)
+    
+    @app_commands.command(description="Bot says ... ")
+    @is_owner()
+    async def say(self, interaction: discord.Interaction, txt: str):
+        await interaction.response.send_message(f'You said {txt}!', ephemeral=True)
+        
+    @say.error
+    async def say_error(self, interaction: discord.Interaction, error):
+        await interaction.response.send_message('Not allowed!', ephemeral=True)
+        
+        
+        
+async def setup(bot):
+    await bot.add_cog(Pfp(bot))
+ 
