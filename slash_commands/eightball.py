@@ -1,7 +1,5 @@
 import discord
 import random
-import typing
-import datetime
 from discord.ext import commands
 from discord import app_commands
 
@@ -20,14 +18,17 @@ class EightballSlash(commands.Cog):
         self.bot = bot
 
     @app_commands.command(name='8ball', description='Ask the magic 8-ball a question')
+    @app_commands.describe(question='What you want to ask the magic 8ball?')
     async def eight_ball(self, interaction: discord.Interaction, *, question: str):
         ballresponse = random.choice(eight_ball_responses)
         user_display_name = interaction.user.display_name
         title = f"<:the8ball:1157555345368043570> | {ballresponse}, {user_display_name}"
         embed_color = discord.Color.from_rgb(113, 7, 7)
-        embed = discord.Embed(title=title, description="", color=embed_color)
+        embed = discord.Embed(title=title, description=question, color=embed_color)
         embed.set_footer(text="Know your fortune.")
         await interaction.response.send_message(embed=embed)
+        
+ 
 
         
 async def setup(bot):
