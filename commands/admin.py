@@ -5,12 +5,13 @@ def is_admin(ctx):
     return ctx.author.guild_permissions.administrator
 
 class Admin(commands.Cog):
-    """Admininstrator only"""
+    
     def __init__(self, bot):
         self.bot = bot
 
     @commands.group()
     async def admin(self, ctx):
+        """Admininstrator only"""
         if ctx.invoked_subcommand is None:
             await ctx.send(f'Invalid admin command. Use `>admin kick` or `>admin ban`.')
 
