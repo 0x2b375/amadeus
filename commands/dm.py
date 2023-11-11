@@ -8,6 +8,7 @@ class Dm(commands.Cog):
 
     @commands.command()
     async def dm(self, ctx, user: discord.Member, *, message=None):
+      """Direct message to user"""
       if user == ctx.author:
         await ctx.send("I cannot send a DM to myself.")
         return

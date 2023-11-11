@@ -9,6 +9,7 @@ class Epicgames(commands.Cog):
 
     @commands.command()
     async def epicgames(self, ctx):
+      """See current epicgames free game"""
       url = "https://epic-free-games.p.rapidapi.com/epic-free-games"
 
       headers = {

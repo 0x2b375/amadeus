@@ -18,6 +18,7 @@ class Eightball(commands.Cog):
 
     @commands.command(name='8ball')
     async def eight_ball(self, ctx, *, question):
+        """Ask everything"""
         ballresponse = random.choice(eight_ball_responses)
         user_display_name = ctx.author.display_name
         title = f"<:the8ball:1157555345368043570> | {ballresponse}, {user_display_name}"

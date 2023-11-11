@@ -10,6 +10,7 @@ class Weather(commands.Cog):
 
     @commands.command()
     async def weather(self, ctx, day: int = 0):
+      """Shows weather"""
       try:
         url = "https://ai-weather-by-meteosource.p.rapidapi.com/daily"
         querystring = {

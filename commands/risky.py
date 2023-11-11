@@ -11,6 +11,7 @@ class Risky(commands.Cog):
 
     @commands.command()
     async def risky(self, ctx, category: str = None):
+        """NSFW"""
         hentai_lists = [
             'anal', 'ass', 'bdsm', 'cum', 'classic', 'creampie', 'manga', 'femdom',
             'hentai', 'incest', 'masturbation', 'public', 'ero', 'orgy', 'elves',

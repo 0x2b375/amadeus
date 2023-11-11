@@ -13,6 +13,7 @@ class Genshin(commands.Cog):
 
     @genshin.command(name="wrio")
     async def wrio(self, ctx):
+        """Check Wriothesley's farm guide"""
         nl = "\n"
         message = (
             f"Mon: Stormterror x1, Wolf x2/Ley line xp book{nl}"

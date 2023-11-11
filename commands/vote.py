@@ -7,6 +7,7 @@ class Vote(commands.Cog):
 
     @commands.command()
     async def vote(ctx, question, *choices):
+        """Voting system"""
         if len(choices) < 2:
             await ctx.send("Please provide at least two choices for the vote.")
             return

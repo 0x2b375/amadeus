@@ -9,6 +9,7 @@ class Peepee(commands.Cog):
 
     @commands.command()
     async def peepee(self, ctx, *mentions: discord.User):
+        """( ͡° ͜ʖ ͡°)"""
         equals_count = random.randint(1, 20)
         if not mentions:
             mentions = [ctx.author]

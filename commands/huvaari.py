@@ -8,6 +8,7 @@ class Huvaari(commands.Cog):
 
     @commands.command()
     async def huvaari(self, ctx, user: discord.Member):
+        """Shows huvaari of registered people"""
         user_id = str(user.id)
         user_images = {
             "232445753954402304":

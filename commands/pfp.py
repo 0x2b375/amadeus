@@ -7,6 +7,7 @@ class Pfp(commands.Cog):
 
     @commands.command()
     async def pfp(self, ctx, *mentions: discord.User):
+        """Shows pfp"""
         nl = "\n"
         if not mentions:
             mentions = [ctx.author]
