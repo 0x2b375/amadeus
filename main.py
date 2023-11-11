@@ -24,6 +24,7 @@ async def setup_hook():
     for filename in os.listdir('slash_commands'):
         if filename.endswith('.py'):
             await bot.load_extension(f'slash_commands.{filename[:-3]}')
+    await bot.load_extension(f'sync.py')
     
 
 bot.run(token)
