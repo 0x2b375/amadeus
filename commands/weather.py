@@ -68,7 +68,7 @@ class Weather(commands.Cog):
             "An error occurred while fetching weather data. Please try again later."
         )
     @weather.error
-    async def weather_error(ctx, error):
+    async def weather_error(self, ctx, error):
       current_date = datetime.datetime.now()
       if isinstance(error, commands.BadArgument):
         await ctx.send(f"You have to insert number. [{current_date} = 0]")
