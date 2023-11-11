@@ -28,6 +28,7 @@ class Anime(commands.Cog):
 
     @commands.command()
     async def anime(self, ctx, *, animeName: str):
+        """Search your favorite anime"""
         anime_dict = anilist.get_anime(animeName)
         color_bot = discord.Colour.from_rgb(113, 7, 7)
         eng_name = anime_dict["name_english"]
