@@ -5,6 +5,7 @@ def is_admin(ctx):
     return ctx.author.guild_permissions.administrator
 
 class Admin(commands.Cog):
+    """Admininstrator only"""
     def __init__(self, bot):
         self.bot = bot
 
