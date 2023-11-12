@@ -7,7 +7,7 @@ class Converter(commands.Cog):
         
     @commands.group()
     async def convert(self, ctx):
-        """Convert things using this command"""
+        """Convert things using this command, >help convert"""
         if ctx.invoked_subcommand is None:
             await ctx.send(f'Invalid subcommand. Use `>help convert`.')
     
