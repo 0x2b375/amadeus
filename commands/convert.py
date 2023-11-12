@@ -4,13 +4,13 @@ from discord.ext import commands
 class Converter(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
-        
+
     @commands.group()
     async def convert(self, ctx):
         """Convert things using this command, >help convert"""
         if ctx.invoked_subcommand is None:
             await ctx.send(f'Invalid subcommand. Use `>help convert`.')
-    
+
     @convert.command()
     async def hex(self, ctx, number: typing.Union[int, str]):
         """Converts a decimal number to hex etc"""
@@ -21,7 +21,7 @@ class Converter(commands.Cog):
                 if number.startswith('0x'):
                   decimal_number = int(number, 16)
                   hex_representation = hex(decimal_number)[2:]
-                  
+
                   await ctx.send(f"{number} in hex is {decimal_number} in decimal.")
                 elif number.startswith('0b'):
                     decimal_number = int(number, 2)
@@ -33,6 +33,8 @@ class Converter(commands.Cog):
                     octal_representation = oct(decimal_number)[2:]
                     hex_representation = hex(decimal_number)[2:]
                     await ctx.send(f"{octal_representation} in octal is {hex_representation} in hex.")
+                else:
+                    await ctx.send(f"{number} is not a valid hex number.")
             except ValueError:
                 await ctx.send(f"Invalid hex input: {number}")
 
@@ -57,6 +59,8 @@ class Converter(commands.Cog):
                   decimal_number = int(number, 8)
                   octal_representation = oct(decimal_number)[2:]
                   await ctx.send(f"{octal_representation} in octal is {decimal_number} in decimal.")
+                else:
+                  await ctx.send(f"Invalid octal input: {number}")
             except ValueError:
                 await ctx.send(f"Invalid octal input: {number}")
 
@@ -81,6 +85,8 @@ class Converter(commands.Cog):
                   decimal_number = int(number, 2)
                   binary_representation = bin(decimal_number)[2:]
                   await ctx.send(f"{binary_representation} in binary is {decimal_number} in decimal.")
+                else:
+                  await ctx.send(f"Invalid binary input: {number}")
             except ValueError:
                 await ctx.send(f"Invalid binary input: {number}")
 
