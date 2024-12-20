@@ -2,7 +2,7 @@ import discord
 from typing import Literal, Optional
 from discord.ext import commands
 from discord import app_commands
-import utils
+
 class Sync(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
